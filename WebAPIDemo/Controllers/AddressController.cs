@@ -7,33 +7,63 @@ using WebAPIDemo.Repository;
 namespace WebAPIDemo.Controllers
 {
     [ApiController]
-    [Route("[address]")]
+    [Route("address")]
     public class AddressController : Controller
     {
-        private IAddressRepository _addressRepository;
+        private readonly IAddressRepository _addressRepository;
 
-        public IActionResult Index()
+        public AddressController()
         {
-            return View();
+            _addressRepository = new AddressRepository(Constants.DatabaseName);
         }
 
         // get all
         [HttpGet]
-        public IEnumerable<List<Address>> Get()
+        public List<Address> Get()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _addressRepository.LoadAll();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Exception thrown in WebAPIDemo.Controllers.AddressController");
+                return null;
+            }
+
         }
 
         // get by id
+        [HttpGet("{id}")]
         public Address GetAddressById(string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _addressRepository.GetAddressById(id);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Exception thrown in WebAPIDemo.Controllers.AddressController");
+                return null;
+            }
         }
 
         // add
+        [HttpPost]
         public bool AddNewAddress(Address address)
         {
-            throw new NotImplementedException();
+            try
+            {
+                address.Id = Guid.NewGuid();
+                Console.WriteLine(address.ToString());
+                _addressRepository.AddAddress(address);
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Exception thrown in WebAPIDemo.Controllers.AddressController");
+                return false;
+            };
         }
     }
 }

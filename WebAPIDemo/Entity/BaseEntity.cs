@@ -3,9 +3,9 @@ using System;
 
 namespace WebAPIDemo.Entity
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
-        [BsonId] public Guid Id { get; }
+        [BsonId] public Guid Id { get; set; }
 
     }
 }

@@ -7,6 +7,7 @@ namespace WebAPIDemo.Repository
 {
     public static class Constants
     {
+        public static readonly string DatabaseName = "usersDB";
         public static readonly string CollectionName_address = "address";
     }
 }
