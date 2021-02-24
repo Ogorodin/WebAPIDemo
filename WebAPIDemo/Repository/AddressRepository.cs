@@ -8,12 +8,12 @@ namespace WebAPIDemo.Repository
 {
     public class AddressRepository : IAddressRepository
     {
-        IMongoCollection<Address> _addressCollection;
+        private readonly IMongoCollection<Address> _addressCollection;
 
-        public AddressRepository(string database)
+        public AddressRepository()
         {
             MongoClient client = new MongoClient();
-            IMongoDatabase db = client.GetDatabase(database);
+            IMongoDatabase db = client.GetDatabase(Constants.DatabaseName);
             _addressCollection = db.GetCollection<Address>(Constants.CollectionName_address);
         }
 

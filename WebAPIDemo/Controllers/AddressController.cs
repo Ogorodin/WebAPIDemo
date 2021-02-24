@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using WebAPIDemo.Entity;
 using WebAPIDemo.Repository;
+using WebAPIDemo.Services;
 
 namespace WebAPIDemo.Controllers
 {
@@ -10,11 +11,11 @@ namespace WebAPIDemo.Controllers
     [Route("address")]
     public class AddressController : Controller
     {
-        private readonly IAddressRepository _addressRepository;
+        private readonly IAddressService _addressService;
 
-        public AddressController()
+        public AddressController(IAddressService service)
         {
-            _addressRepository = new AddressRepository(Constants.DatabaseName);
+            _addressService = service;
         }
 
         // get all
@@ -23,7 +24,7 @@ namespace WebAPIDemo.Controllers
         {
             try
             {
-                List<Address> addressList = _addressRepository.LoadAll();
+                List<Address> addressList = _addressService.LoadAll();
                 if (addressList != null)
                 {
                     return StatusCode(200, addressList);
@@ -45,7 +46,7 @@ namespace WebAPIDemo.Controllers
         {
             try
             {
-                Address address = _addressRepository.GetAddressById(id);
+                Address address = _addressService.GetAddressById(id);
                 if (address != null)
                 {
                     return StatusCode(200, address);
@@ -69,7 +70,7 @@ namespace WebAPIDemo.Controllers
             {
                 address.Id = Guid.NewGuid();
                 Console.WriteLine(address.ToString());
-                _addressRepository.AddAddress(address);
+                _addressService.AddAddress(address);
                 return StatusCode(200);
             }
             catch (Exception)

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using WebAPIDemo.Entity;
 
-namespace WebAPIDemo.Repository
+namespace WebAPIDemo.Services
 {
-    public interface IAddressRepository
+    public interface IAddressService
     {
         public List<Address> LoadAll();
         public Address GetAddressById(string id);
