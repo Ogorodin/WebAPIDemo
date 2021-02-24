@@ -1,10 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace WebAPIDemo.Entity
+namespace DataLayer.Entity
 {
     public class Address : BaseEntity
     {

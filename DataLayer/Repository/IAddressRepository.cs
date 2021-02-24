@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using WebAPIDemo.Entity;
+﻿using DataLayer.Entity;
+using System.Collections.Generic;
 
-namespace WebAPIDemo.Repository
+namespace DataLayer.Repository
 {
     public interface IAddressRepository
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebAPIDemo.Entity;
+using DataLayer.Entity;
 
-namespace WebAPIDemo.Services
+namespace APIDemo.Services
 {
     public interface IAddressService
     {

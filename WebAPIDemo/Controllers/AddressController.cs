@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataLayer.Entity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using WebAPIDemo.Entity;
-using WebAPIDemo.Repository;
-using WebAPIDemo.Services;
+using APIDemo.Services;
 
-namespace WebAPIDemo.Controllers
+namespace APIDemo.Controllers
 {
     [ApiController]
     [Route("address")]

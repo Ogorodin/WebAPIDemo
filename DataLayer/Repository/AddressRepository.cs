@@ -1,10 +1,11 @@
-﻿using MongoDB.Driver;
+﻿using DataLayer.Entity;
+using Domain;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebAPIDemo.Entity;
 
-namespace WebAPIDemo.Repository
+namespace DataLayer.Repository
 {
     public class AddressRepository : IAddressRepository
     {
