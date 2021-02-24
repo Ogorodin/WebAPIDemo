@@ -19,50 +19,62 @@ namespace WebAPIDemo.Controllers
 
         // get all
         [HttpGet]
-        public List<Address> Get()
+        public IActionResult GetAll()
         {
             try
             {
-                return _addressRepository.LoadAll();
+                List<Address> addressList = _addressRepository.LoadAll();
+                if (addressList != null)
+                {
+                    return StatusCode(200, addressList);
+                }
+                else
+                {
+                    return StatusCode(404);
+                }
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                Console.WriteLine("Exception thrown in WebAPIDemo.Controllers.AddressController");
-                return null;
+                return StatusCode(500, exc.StackTrace);
             }
-
         }
 
         // get by id
         [HttpGet("{id}")]
-        public Address GetAddressById(string id)
+        public IActionResult GetAddressById(string id)
         {
             try
             {
-                return _addressRepository.GetAddressById(id);
+                Address address = _addressRepository.GetAddressById(id);
+                if (address != null)
+                {
+                    return StatusCode(200, address);
+                }
+                else
+                {
+                    return StatusCode(404);
+                }
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                Console.WriteLine("Exception thrown in WebAPIDemo.Controllers.AddressController");
-                return null;
+                return StatusCode(500, exc.StackTrace);
             }
         }
 
         // add
         [HttpPost]
-        public bool AddNewAddress(Address address)
+        public IActionResult AddNewAddress(Address address)
         {
             try
             {
                 address.Id = Guid.NewGuid();
                 Console.WriteLine(address.ToString());
                 _addressRepository.AddAddress(address);
-                return true;
+                return StatusCode(200);
             }
             catch (Exception)
             {
-                Console.WriteLine("Exception thrown in WebAPIDemo.Controllers.AddressController");
-                return false;
+                return StatusCode(500);
             };
         }
     }
