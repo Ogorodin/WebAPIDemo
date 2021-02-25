@@ -21,6 +21,9 @@ namespace APIDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IAddressService, AddressService>();
             services.AddSingleton<IAddressRepository, AddressRepository>();
             services.AddControllers();
