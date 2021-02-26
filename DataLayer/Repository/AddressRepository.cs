@@ -57,5 +57,33 @@ namespace DataLayer.Repository
                 return false;
             }
         }
+
+        public bool UpdateAddress(string id, Address address)
+        {
+            try
+            {
+                _addressCollection.FindOneAndReplace(address => address.Id == Guid.Parse(id), address);
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Exception caught in WebAPIDemo.Repository.AddressRepository.UpdateAddress");
+                return false;
+            }
+        }
+
+        public bool DeleteAddress(string id)
+        {
+            try
+            {
+                _addressCollection.DeleteOne(address => address.Id == Guid.Parse(id));
+                return true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Exception caught in WebAPIDemo.Repository.AddressRepository.DeleteAddress");
+                return false;
+            }
+        }
     }
 }

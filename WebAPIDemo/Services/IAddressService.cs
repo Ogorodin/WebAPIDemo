@@ -8,5 +8,8 @@ namespace APIDemo.Services
         public List<Address> LoadAll();
         public Address GetAddressById(string id);
         public bool AddAddress(Address address);
+        public bool UpdateAddress(string id, Address updatedAddress);
+        public bool DeleteAddress(string id);
+
     }
 }

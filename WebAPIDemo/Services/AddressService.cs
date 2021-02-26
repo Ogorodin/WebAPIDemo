@@ -16,22 +16,32 @@ namespace APIDemo.Services
 
         public List<Address> LoadAll()
         {
-            Console.WriteLine("AddressService implementation run trough LoadAll()");
+            Console.WriteLine("AddressService implementation run trough API.Services.AddressService.LoadAll()");
             return _addressRepository.LoadAll();
         }
 
         public bool AddAddress(Address address)
         {
-            Console.WriteLine("AddressService implementation run trough AddAddress()");
+            Console.WriteLine("AddressService implementation run trough API.Services.AddressService.AddAddress()");
             return _addressRepository.AddAddress(address);
         }
 
         public Address GetAddressById(string id)
         {
-            Console.WriteLine("AddressService implementation run trough GetAddressById()");
+            Console.WriteLine("AddressService implementation run trough API.Services.AddressService.GetAddressById()");
             return _addressRepository.GetAddressById(id);
         }
 
+        public bool UpdateAddress(string id, Address updatedAddress)
+        {
+            Console.WriteLine("AddressService implementation run trough API.Services.AddressService.UpdateAddress()");
+            return _addressRepository.UpdateAddress(id, updatedAddress);
+        }
 
+        public bool DeleteAddress(string id)
+        {
+            Console.WriteLine("AddressService implementation run trough  API.Services.AddressService.DeleteAddress()");
+            return _addressRepository.DeleteAddress(id);
+        }
     }
 }

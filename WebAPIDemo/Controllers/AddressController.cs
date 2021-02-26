@@ -77,5 +77,42 @@ namespace APIDemo.Controllers
                 return StatusCode(500);
             };
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteAddress(string id)
+        {
+            try
+            {
+                if (_addressService.DeleteAddress(id))
+                {
+                    return StatusCode(202);
+                }
+                return StatusCode(404);
+            }
+            catch (Exception exc)
+            {
+                return StatusCode(500, exc.StackTrace);
+            }
+        }
+
+        [HttpPost("{id}")]
+        public IActionResult UpdateAddress(string id, Address address)
+        {
+            try
+            {
+                if (_addressService.UpdateAddress(id, address))
+                {
+                    return StatusCode(200);
+                }
+                else
+                {
+                    return StatusCode(404);
+                }
+            }
+            catch (Exception exc)
+            {
+                return StatusCode(500, exc.StackTrace);
+            }
+        }
     }
 }

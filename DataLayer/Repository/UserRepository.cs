@@ -2,6 +2,7 @@
 using Domain;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DataLayer.Repository
@@ -17,6 +18,19 @@ namespace DataLayer.Repository
             _userCollection = db.GetCollection<User>(Constants.CollectionName_user);
         }
 
+        public List<User> LoadAllUsers()
+        {
+            try
+            {
+                return _userCollection.AsQueryable().ToList();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.LoadAllUsers()");
+                return null;
+            }
+        }
+
         public User FindById(string id)
         {
             try
@@ -29,6 +43,7 @@ namespace DataLayer.Repository
                 return null;
             }
         }
+
         public bool AddUser(User user)
         {
             try
@@ -36,25 +51,40 @@ namespace DataLayer.Repository
                 _userCollection.InsertOne(user);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.AddUser");
+                Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.AddUser", exc.StackTrace);
                 return false;
             }
         }
+
         public bool UpdateUser(string id, User updatedUser)
         {
-            // not implemented
-            return false;
+            try
+            {
+                _userCollection.FindOneAndReplace(user => user.Id == Guid.Parse(id), updatedUser);
+                return true;
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.UpdateUser", exc.StackTrace);
+                return false;
+            }
+
         }
         public bool DeleteUser(string id)
         {
-            Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.UpdateUser");
-            return false;
+            try
+            {
+                _userCollection.DeleteOne(user => user.Id == Guid.Parse(id));
+                return true;
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.DeleteUser()", exc.StackTrace);
+                return false;
+            }
+
         }
-
-
-
-
     }
 }
