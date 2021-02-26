@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using APIDemo.Services;
+using Domain;
+using Domain.Exceptions;
 
 namespace APIDemo.Controllers
 {
@@ -33,6 +35,14 @@ namespace APIDemo.Controllers
                     return StatusCode(404);
                 }
             }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
+            }
             catch (Exception exc)
             {
                 return StatusCode(500, exc.StackTrace);
@@ -40,7 +50,8 @@ namespace APIDemo.Controllers
         }
 
         // get by id
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id}")]
         public IActionResult GetAddressById(string id)
         {
             try
@@ -54,6 +65,14 @@ namespace APIDemo.Controllers
                 {
                     return StatusCode(404);
                 }
+            }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
             }
             catch (Exception exc)
             {
@@ -72,13 +91,22 @@ namespace APIDemo.Controllers
                 _addressService.AddAddress(address);
                 return StatusCode(200);
             }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
+            }
             catch (Exception)
             {
                 return StatusCode(500);
             };
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("{id}")]
         public IActionResult DeleteAddress(string id)
         {
             try
@@ -89,13 +117,22 @@ namespace APIDemo.Controllers
                 }
                 return StatusCode(404);
             }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
+            }
             catch (Exception exc)
             {
                 return StatusCode(500, exc.StackTrace);
             }
         }
 
-        [HttpPost("{id}")]
+        [HttpPut]
+        [Route("{id}")]
         public IActionResult UpdateAddress(string id, Address address)
         {
             try
@@ -108,6 +145,14 @@ namespace APIDemo.Controllers
                 {
                     return StatusCode(404);
                 }
+            }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
             }
             catch (Exception exc)
             {

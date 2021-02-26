@@ -24,10 +24,10 @@ namespace DataLayer.Repository
             {
                 return _userCollection.AsQueryable().ToList();
             }
-            catch (Exception)
+            catch (Exception exc)
             {
                 Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.LoadAllUsers()");
-                return null;
+                throw new DataLayerException("Something went wrong in the database.", exc);
             }
         }
 
@@ -37,10 +37,10 @@ namespace DataLayer.Repository
             {
                 return _userCollection.Find(user => user.Id == Guid.Parse(id)).FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception exc)
             {
                 Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.FindById");
-                return null;
+                throw new DataLayerException("Something went wrong in the database.", exc);
             }
         }
 
@@ -54,7 +54,7 @@ namespace DataLayer.Repository
             catch (Exception exc)
             {
                 Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.AddUser", exc.StackTrace);
-                return false;
+                throw new DataLayerException("Something went wrong in the database.", exc);
             }
         }
 
@@ -68,7 +68,7 @@ namespace DataLayer.Repository
             catch (Exception exc)
             {
                 Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.UpdateUser", exc.StackTrace);
-                return false;
+                throw new DataLayerException("Something went wrong in the database.", exc);
             }
 
         }
@@ -82,7 +82,7 @@ namespace DataLayer.Repository
             catch (Exception exc)
             {
                 Console.WriteLine("Exception caught in DataLayer.Repository.UserRepository.DeleteUser()", exc.StackTrace);
-                return false;
+                throw new DataLayerException("Something went wrong in the database.", exc);
             }
 
         }

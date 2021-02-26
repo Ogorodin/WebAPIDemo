@@ -1,5 +1,7 @@
 ﻿using APIDemo.Services;
 using DataLayer.Entity;
+using Domain;
+using Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -24,22 +26,30 @@ namespace APIDemo.Controllers
                 var list = _userService.LoadAllUsers();
                 if (list != null)
                 {
-                    return StatusCode(200, list);
+                    return Ok(list);
                 }
                 else
                 {
-                    return StatusCode(404);
+                    return NotFound();
                 }
+            }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
             }
             catch (Exception exc)
             {
-                Console.WriteLine("Exception caught in API.Controllers.UserController.LoadAllUsers()");
                 return StatusCode(500, exc.StackTrace);
             }
         }
 
         // find by id
         [HttpGet]
+        [Route("{id}")]
         public IActionResult FindUserById(string id)
         {
             try
@@ -47,12 +57,20 @@ namespace APIDemo.Controllers
                 var user = _userService.FindById(id);
                 if (user != null)
                 {
-                    return StatusCode(200, user);
+                    return Ok(user);
                 }
                 else
                 {
-                    return StatusCode(404);
+                    return NotFound();
                 }
+            }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
             }
             catch (Exception exc)
             {
@@ -71,11 +89,19 @@ namespace APIDemo.Controllers
                 user.Id = id;
                 if (_userService.AddUser(user))
                 {
-                    return StatusCode(200);
+                    return Ok();
                 }
-                return StatusCode(404);
+                return NotFound();
             }
-            catch (Exception exc) // handle again
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
+            }
+            catch (Exception exc)
             {
                 Console.WriteLine("Exception caught in API.Controllers.UserController.AddUser()");
                 return StatusCode(500, exc.StackTrace);
@@ -83,15 +109,24 @@ namespace APIDemo.Controllers
         }
         // delete user
         [HttpDelete]
+        [Route("{id}")]
         public IActionResult DeleteUser(string id)
         {
             try
             {
                 if (_userService.DeleteUser(id))
                 {
-                    return StatusCode(200);
+                    return Ok();
                 }
-                return StatusCode(404);
+                return NotFound();
+            }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
             }
             catch (Exception exc)
             {
@@ -101,19 +136,28 @@ namespace APIDemo.Controllers
         }
 
         // update user
-        [HttpPost("{id}")]
+        [HttpPut]
+        [Route("{id}")]
         public IActionResult UpdateUser(string id, User updatedUser)
         {
             try
             {
                 if (_userService.UpdateUser(id, updatedUser))
                 {
-                    return StatusCode(200, updatedUser);
+                    return Ok(updatedUser);
                 }
                 else
                 {
-                    return StatusCode(404);
+                    return NotFound();
                 }
+            }
+            catch (DataLayerException)
+            {
+                return StatusCode(500);
+            }
+            catch (UserServiceException)
+            {
+                return StatusCode(500);
             }
             catch (Exception exc)
             {
