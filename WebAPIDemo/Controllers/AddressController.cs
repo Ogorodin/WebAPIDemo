@@ -23,29 +23,14 @@ namespace APIDemo.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            try
+            List<Address> addressList = _addressService.LoadAll();
+            if (addressList != null)
             {
-                List<Address> addressList = _addressService.LoadAll();
-                if (addressList != null)
-                {
-                    return StatusCode(200, addressList);
-                }
-                else
-                {
-                    return StatusCode(404);
-                }
+                return StatusCode(200, addressList);
             }
-            catch (DataLayerException)
+            else
             {
-                return StatusCode(500);
-            }
-            catch (UserServiceException)
-            {
-                return StatusCode(500);
-            }
-            catch (Exception exc)
-            {
-                return StatusCode(500, exc.StackTrace);
+                return StatusCode(404);
             }
         }
 
@@ -54,29 +39,14 @@ namespace APIDemo.Controllers
         [Route("{id}")]
         public IActionResult GetAddressById(string id)
         {
-            try
+            Address address = _addressService.GetAddressById(id);
+            if (address != null)
             {
-                Address address = _addressService.GetAddressById(id);
-                if (address != null)
-                {
-                    return StatusCode(200, address);
-                }
-                else
-                {
-                    return StatusCode(404);
-                }
+                return StatusCode(200, address);
             }
-            catch (DataLayerException)
+            else
             {
-                return StatusCode(500);
-            }
-            catch (UserServiceException)
-            {
-                return StatusCode(500);
-            }
-            catch (Exception exc)
-            {
-                return StatusCode(500, exc.StackTrace);
+                return StatusCode(404);
             }
         }
 
@@ -84,79 +54,35 @@ namespace APIDemo.Controllers
         [HttpPost]
         public IActionResult AddNewAddress(Address address)
         {
-            try
-            {
-                address.Id = Guid.NewGuid();
-                Console.WriteLine(address.ToString());
-                _addressService.AddAddress(address);
-                return StatusCode(200);
-            }
-            catch (DataLayerException)
-            {
-                return StatusCode(500);
-            }
-            catch (UserServiceException)
-            {
-                return StatusCode(500);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500);
-            };
+            address.Id = Guid.NewGuid();
+            Console.WriteLine(address.ToString());
+            _addressService.AddAddress(address);
+            return StatusCode(200);
         }
 
         [HttpDelete]
         [Route("{id}")]
         public IActionResult DeleteAddress(string id)
         {
-            try
+
+            if (_addressService.DeleteAddress(id))
             {
-                if (_addressService.DeleteAddress(id))
-                {
-                    return StatusCode(202);
-                }
-                return StatusCode(404);
+                return StatusCode(202);
             }
-            catch (DataLayerException)
-            {
-                return StatusCode(500);
-            }
-            catch (UserServiceException)
-            {
-                return StatusCode(500);
-            }
-            catch (Exception exc)
-            {
-                return StatusCode(500, exc.StackTrace);
-            }
+            return StatusCode(404);
         }
 
         [HttpPut]
         [Route("{id}")]
         public IActionResult UpdateAddress(string id, Address address)
         {
-            try
+            if (_addressService.UpdateAddress(id, address))
             {
-                if (_addressService.UpdateAddress(id, address))
-                {
-                    return StatusCode(200);
-                }
-                else
-                {
-                    return StatusCode(404);
-                }
+                return StatusCode(200);
             }
-            catch (DataLayerException)
+            else
             {
-                return StatusCode(500);
-            }
-            catch (UserServiceException)
-            {
-                return StatusCode(500);
-            }
-            catch (Exception exc)
-            {
-                return StatusCode(500, exc.StackTrace);
+                return StatusCode(404);
             }
         }
     }

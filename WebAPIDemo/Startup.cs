@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using DataLayer.Repository;
 using APIDemo.Services;
+using APIDemo.Helpers;
 
 namespace APIDemo
 {
@@ -43,6 +44,7 @@ namespace APIDemo
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIDemo v1"));
             }
 
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseRouting();
