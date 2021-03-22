@@ -23,7 +23,15 @@ namespace APIDemo.Services
         public bool AddAddress(Address address)
         {
             Console.WriteLine("AddressService implementation run trough API.Services.AddressService.AddAddress()");
-            return _addressRepository.AddAddress(address);
+
+            if (_addressRepository.AddAddress(address))
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
 
         public Address GetAddressById(string id)
