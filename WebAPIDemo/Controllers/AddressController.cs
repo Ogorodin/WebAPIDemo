@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using APIDemo.Services;
-using Domain;
-using Domain.Exceptions;
+using System.Threading.Tasks;
 
 namespace APIDemo.Controllers
 {
@@ -21,9 +20,9 @@ namespace APIDemo.Controllers
 
         // get all
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            List<Address> addressList = _addressService.LoadAll();
+            List<Address> addressList = await _addressService.LoadAllAsync();
             if (addressList != null)
             {
                 return StatusCode(200, addressList);
@@ -37,9 +36,9 @@ namespace APIDemo.Controllers
         // get by id
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetAddressById(string id)
+        public async Task<IActionResult> GetAddressByIdAsync(string id)
         {
-            Address address = _addressService.GetAddressById(id);
+            Address address = await _addressService.GetAddressByIdAsync(id);
             if (address != null)
             {
                 return StatusCode(200, address);
@@ -52,20 +51,20 @@ namespace APIDemo.Controllers
 
         // add
         [HttpPost]
-        public IActionResult AddNewAddress(Address address)
+        public async Task<IActionResult> AddNewAddressAsync(Address address)
         {
             address.Id = Guid.NewGuid();
             Console.WriteLine(address.ToString());
-            _addressService.AddAddress(address);
+            await _addressService.AddAddressAsync(address);
             return StatusCode(200);
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteAddress(string id)
+        public async Task<IActionResult> DeleteAddressAsync(string id)
         {
 
-            if (_addressService.DeleteAddress(id))
+            if (await _addressService.DeleteAddressAsync(id))
             {
                 return StatusCode(202);
             }
@@ -74,9 +73,9 @@ namespace APIDemo.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public IActionResult UpdateAddress(string id, Address address)
+        public async Task<IActionResult> UpdateAddressAsync(string id, Address address)
         {
-            if (_addressService.UpdateAddress(id, address))
+            if (await _addressService.UpdateAddressAsync(id, address))
             {
                 return StatusCode(200);
             }

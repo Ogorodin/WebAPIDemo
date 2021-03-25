@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DataLayer.Entity;
 using DataLayer.Repository;
 
@@ -14,17 +15,17 @@ namespace APIDemo.Services
             _addressRepository = addressRepository;
         }
 
-        public List<Address> LoadAll()
+        public async Task<List<Address>> LoadAllAsync()
         {
             Console.WriteLine("AddressService implementation run trough API.Services.AddressService.LoadAll()");
-            return _addressRepository.LoadAll();
+            return await _addressRepository.LoadAllAsync();
         }
 
-        public bool AddAddress(Address address)
+        public async Task<bool> AddAddressAsync(Address address)
         {
             Console.WriteLine("AddressService implementation run trough API.Services.AddressService.AddAddress()");
 
-            if (_addressRepository.AddAddress(address))
+            if ( await _addressRepository.AddAddressAsync(address))
             {
                 return true;
             }
@@ -34,22 +35,22 @@ namespace APIDemo.Services
             }
         }
 
-        public Address GetAddressById(string id)
+        public async Task<Address> GetAddressByIdAsync(string id)
         {
             Console.WriteLine("AddressService implementation run trough API.Services.AddressService.GetAddressById()");
-            return _addressRepository.GetAddressById(id);
+            return await _addressRepository.GetAddressByIdAsync(id);
         }
 
-        public bool UpdateAddress(string id, Address updatedAddress)
+        public async Task<bool> UpdateAddressAsync(string id, Address updatedAddress)
         {
             Console.WriteLine("AddressService implementation run trough API.Services.AddressService.UpdateAddress()");
-            return _addressRepository.UpdateAddress(id, updatedAddress);
+            return await _addressRepository.UpdateAddressAsync(id, updatedAddress);
         }
 
-        public bool DeleteAddress(string id)
+        public async Task<bool> DeleteAddressAsync(string id)
         {
             Console.WriteLine("AddressService implementation run trough  API.Services.AddressService.DeleteAddress()");
-            return _addressRepository.DeleteAddress(id);
+            return await _addressRepository.DeleteAddressAsync(id);
         }
     }
 }
