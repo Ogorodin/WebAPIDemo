@@ -2,6 +2,7 @@
 using DataLayer.Entity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace APIDemo.Controllers
 {
@@ -17,10 +18,10 @@ namespace APIDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult LoadAllUsers()
+        public async Task<IActionResult> LoadAllUsersAsync()
         {
 
-            var list = _userService.LoadAllUsers();
+            var list = await _userService.LoadAllUsersAsync();
             if (list != null)
             {
                 return Ok(list);
@@ -37,9 +38,9 @@ namespace APIDemo.Controllers
         // find by id
         [HttpGet]
         [Route("{id}")]
-        public IActionResult FindUserById(string id)
+        public async Task<IActionResult> FindUserByIdAsync(string id)
         {
-            var user = _userService.FindById(id);
+            var user = await _userService.FindByIdAsync(id);
             if (user != null)
             {
                 return Ok(user);
@@ -53,12 +54,12 @@ namespace APIDemo.Controllers
 
         // add user
         [HttpPost]
-        public IActionResult AddUser(User user)
+        public async Task<IActionResult> AddUserAsync(User user)
         {
 
             Guid id = Guid.NewGuid();
             user.Id = id;
-            if (_userService.AddUser(user))
+            if (await _userService.AddUserAsync(user))
             {
                 return Ok();
             }
@@ -68,10 +69,10 @@ namespace APIDemo.Controllers
         // delete user
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteUser(string id)
+        public async Task<IActionResult> DeleteUserAsync(string id)
         {
 
-            if (_userService.DeleteUser(id))
+            if (await _userService.DeleteUserAsync(id))
             {
                 return Ok();
             }
@@ -82,10 +83,10 @@ namespace APIDemo.Controllers
         // update user
         [HttpPut]
         [Route("{id}")]
-        public IActionResult UpdateUser(string id, User updatedUser)
+        public async Task<IActionResult> UpdateUserAsync(string id, User updatedUser)
         {
 
-            if (_userService.UpdateUser(id, updatedUser))
+            if (await _userService.UpdateUserAsync(id, updatedUser))
             {
                 return Ok(updatedUser);
             }

@@ -1,14 +1,15 @@
 ﻿using DataLayer.Entity;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace APIDemo.Services
 {
     public interface IUserService
     {
-        List<User> LoadAllUsers();
-        public User FindById(string id);
-        public bool AddUser(User user);
-        public bool UpdateUser(string id, User updatedUser);
-        public bool DeleteUser(string id);
+        public Task<List<User>> LoadAllUsersAsync();
+        public Task<User> FindByIdAsync(string id);
+        public Task<bool> AddUserAsync(User user);
+        public Task<bool> UpdateUserAsync(string id, User updatedUser);
+        public Task<bool> DeleteUserAsync(string id);
     }
 }

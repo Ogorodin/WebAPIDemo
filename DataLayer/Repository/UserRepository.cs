@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DataLayer.Repository
 {
@@ -18,11 +19,11 @@ namespace DataLayer.Repository
             _userCollection = db.GetCollection<User>(Constants.CollectionName_user);
         }
 
-        public List<User> LoadAllUsers()
+        public async Task<List<User>> LoadAllUsersAsync()
         {
             try
             {
-                return _userCollection.AsQueryable().ToList();
+                return await _userCollection.AsQueryable().ToListAsync();
             }
             catch (Exception exc)
             {
@@ -31,11 +32,11 @@ namespace DataLayer.Repository
             }
         }
 
-        public User FindById(string id)
+        public async Task<User> FindByIdAsync(string id)
         {
             try
             {
-                return _userCollection.Find(user => user.Id == Guid.Parse(id)).FirstOrDefault();
+                return (User)await _userCollection.FindAsync(user => user.Id == Guid.Parse(id));
             }
             catch (Exception exc)
             {
@@ -44,11 +45,11 @@ namespace DataLayer.Repository
             }
         }
 
-        public bool AddUser(User user)
+        public async Task<bool> AddUserAsync(User user)
         {
             try
             {
-                _userCollection.InsertOne(user);
+                await _userCollection.InsertOneAsync(user);
                 return true;
             }
             catch (Exception exc)
@@ -58,11 +59,11 @@ namespace DataLayer.Repository
             }
         }
 
-        public bool UpdateUser(string id, User updatedUser)
+        public async Task<bool> UpdateUserAsync(string id, User updatedUser)
         {
             try
             {
-                _userCollection.FindOneAndReplace(user => user.Id == Guid.Parse(id), updatedUser);
+              await  _userCollection.FindOneAndReplaceAsync(user => user.Id == Guid.Parse(id), updatedUser);
                 return true;
             }
             catch (Exception exc)
@@ -72,11 +73,11 @@ namespace DataLayer.Repository
             }
 
         }
-        public bool DeleteUser(string id)
+        public async Task<bool> DeleteUserAsync(string id)
         {
             try
             {
-                _userCollection.DeleteOne(user => user.Id == Guid.Parse(id));
+               await _userCollection.DeleteOneAsync(user => user.Id == Guid.Parse(id));
                 return true;
             }
             catch (Exception exc)

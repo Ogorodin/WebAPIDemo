@@ -3,6 +3,7 @@ using DataLayer.Repository;
 using Domain.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace APIDemo.Services
 {
@@ -15,7 +16,7 @@ namespace APIDemo.Services
             _userRepository = userRepository;
         }
 
-        public List<User> LoadAllUsers()
+        public async Task<List<User>> LoadAllUsersAsync()
         {
             try
             {
@@ -26,9 +27,9 @@ namespace APIDemo.Services
             {
                 throw new UserServiceException("Something happened in the user service.", exc);
             }
-            return _userRepository.LoadAllUsers();
+            return await _userRepository.LoadAllUsersAsync();
         }
-        public User FindById(string id)
+        public async Task<User> FindByIdAsync(string id)
         {
             try
             {
@@ -39,10 +40,10 @@ namespace APIDemo.Services
             {
                 throw new UserServiceException("Something happened in the user service.", exc);
             }
-            return _userRepository.FindById(id);
+            return await _userRepository.FindByIdAsync(id);
         }
 
-        public bool AddUser(User user)
+        public async Task<bool> AddUserAsync(User user)
         {
             try
             {
@@ -53,23 +54,24 @@ namespace APIDemo.Services
             {
                 throw new UserServiceException("Something happened in the user service.", exc);
             }
-            return _userRepository.AddUser(user);
+            return await _userRepository.AddUserAsync(user);
         }
 
-        public bool DeleteUser(string id)
+        public async Task<bool> DeleteUserAsync(string id)
         {
             try
             {
                 // Imagine some heavy implementation that can cause a problem... PLIP PLOP BLAM
                 Console.WriteLine("UserService implementation run trough  API.Services.UserService.DeleteUser()");
-            }catch(UserServiceException exc)
+            }
+            catch (UserServiceException exc)
             {
                 throw new UserServiceException("Something happened in the user service.", exc);
             }
-            return _userRepository.DeleteUser(id);
+            return await _userRepository.DeleteUserAsync(id);
         }
 
-        public bool UpdateUser(string id, User updatedUser)
+        public async Task<bool> UpdateUserAsync(string id, User updatedUser)
         {
             try
             {
@@ -80,7 +82,7 @@ namespace APIDemo.Services
             {
                 throw new UserServiceException("Something happened in the user service.", exc);
             }
-            return _userRepository.UpdateUser(id, updatedUser);
+            return  await _userRepository.UpdateUserAsync(id, updatedUser);
         }
     }
 }
