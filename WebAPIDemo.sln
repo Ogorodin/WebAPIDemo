@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{86F25117-CDB0-4A78-A8CA-F10D34BC9007}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{CE2CD9CD-5303-48A6-BC2C-46AC2AE306ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{CE2CD9CD-5303-48A6-BC2C-46AC2AE306ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserActivityHandlerService", "UserActivityHandlerService\UserActivityHandlerService.csproj", "{7559E85D-3132-4AEF-ADB8-EF3DDA4F3E62}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86F25117-CDB0-4A78-A8CA-F10D34BC9007} = {86F25117-CDB0-4A78-A8CA-F10D34BC9007}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{CE2CD9CD-5303-48A6-BC2C-46AC2AE306ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE2CD9CD-5303-48A6-BC2C-46AC2AE306ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE2CD9CD-5303-48A6-BC2C-46AC2AE306ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7559E85D-3132-4AEF-ADB8-EF3DDA4F3E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7559E85D-3132-4AEF-ADB8-EF3DDA4F3E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7559E85D-3132-4AEF-ADB8-EF3DDA4F3E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7559E85D-3132-4AEF-ADB8-EF3DDA4F3E62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

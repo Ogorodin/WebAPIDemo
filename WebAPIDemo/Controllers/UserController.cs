@@ -1,7 +1,10 @@
 ﻿using APIDemo.Services;
 using DataLayer.Entity;
+using DataLayer.Repository;
 using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace APIDemo.Controllers
@@ -11,10 +14,12 @@ namespace APIDemo.Controllers
     public class UserController : Controller
     {
         private IUserService _userService;
+        private IMessageService _messageService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IMessageService messageService)
         {
             _userService = userService;
+            _messageService = messageService;
         }
 
         [HttpGet]
@@ -31,9 +36,6 @@ namespace APIDemo.Controllers
                 return NotFound();
             }
         }
-
-
-
 
         // find by id
         [HttpGet]
@@ -56,11 +58,18 @@ namespace APIDemo.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUserAsync(User user)
         {
-
             Guid id = Guid.NewGuid();
             user.Id = id;
             if (await _userService.AddUserAsync(user))
             {
+                try
+                {
+                    _messageService.NotifyRabbit(user.Username, user.Email);
+                }
+                catch
+                {
+                    return NotFound();
+                }
                 return Ok();
             }
             return NotFound();

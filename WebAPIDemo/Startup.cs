@@ -27,6 +27,7 @@ namespace APIDemo
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IAddressService, AddressService>();
             services.AddSingleton<IAddressRepository, AddressRepository>();
+            services.AddSingleton<IMessageService, MessageService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
