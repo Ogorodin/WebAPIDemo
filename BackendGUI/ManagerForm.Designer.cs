@@ -1,7 +1,7 @@
 ﻿
 namespace BackandGUI
 {
-    partial class FormAddProduct
+    partial class ManagerForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -32,7 +32,7 @@ namespace BackandGUI
             this.lblAddProductTitle = new System.Windows.Forms.Label();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.txtBoxProductTitle = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxDescription = new System.Windows.Forms.TextBox();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.comboBoxProductType = new System.Windows.Forms.ComboBox();
@@ -57,6 +57,7 @@ namespace BackandGUI
             this.btnAddProduct.TabIndex = 1;
             this.btnAddProduct.Text = "Add";
             this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // txtBoxProductTitle
             // 
@@ -65,13 +66,13 @@ namespace BackandGUI
             this.txtBoxProductTitle.Size = new System.Drawing.Size(151, 27);
             this.txtBoxProductTitle.TabIndex = 2;
             // 
-            // textBox2
+            // txtBoxDescription
             // 
-            this.textBox2.Location = new System.Drawing.Point(163, 199);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "latin name";
-            this.textBox2.Size = new System.Drawing.Size(151, 27);
-            this.textBox2.TabIndex = 3;
+            this.txtBoxDescription.Location = new System.Drawing.Point(163, 199);
+            this.txtBoxDescription.Name = "txtBoxDescription";
+            this.txtBoxDescription.PlaceholderText = "latin name";
+            this.txtBoxDescription.Size = new System.Drawing.Size(151, 27);
+            this.txtBoxDescription.TabIndex = 3;
             // 
             // lblProductName
             // 
@@ -119,7 +120,7 @@ namespace BackandGUI
             this.lblProdutType.TabIndex = 7;
             this.lblProdutType.Text = "Product type:";
             // 
-            // FormAddProduct
+            // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,13 +129,12 @@ namespace BackandGUI
             this.Controls.Add(this.comboBoxProductType);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblProductName);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtBoxDescription);
             this.Controls.Add(this.txtBoxProductTitle);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.lblAddProductTitle);
-            this.Name = "FormAddProduct";
+            this.Name = "ManagerForm";
             this.Text = "FishShop - Product manager";
-            this.Load += new System.EventHandler(this.FormAddProduct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,7 +145,7 @@ namespace BackandGUI
         private System.Windows.Forms.Label lblAddProductTitle;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.TextBox txtBoxProductTitle;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxDescription;
         private System.Windows.Forms.Label lblProductName;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.ComboBox comboBoxProductType;

@@ -17,7 +17,7 @@ namespace BackandGUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAddProduct());
+            Application.Run(new ManagerForm());
         }
     }
 }
