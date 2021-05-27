@@ -31,6 +31,9 @@ namespace BackandGUI
         {
             this.tabAddProduct = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.lblProductList = new System.Windows.Forms.Label();
+            this.listBoxProductList = new System.Windows.Forms.ListBox();
             this.lblActionResult = new System.Windows.Forms.Label();
             this.lblProdutType = new System.Windows.Forms.Label();
             this.comboBoxProductType = new System.Windows.Forms.ComboBox();
@@ -66,6 +69,9 @@ namespace BackandGUI
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnRefreshList);
+            this.tabPage1.Controls.Add(this.lblProductList);
+            this.tabPage1.Controls.Add(this.listBoxProductList);
             this.tabPage1.Controls.Add(this.lblActionResult);
             this.tabPage1.Controls.Add(this.lblProdutType);
             this.tabPage1.Controls.Add(this.comboBoxProductType);
@@ -82,6 +88,35 @@ namespace BackandGUI
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Add";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.Location = new System.Drawing.Point(486, 428);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(94, 29);
+            this.btnRefreshList.TabIndex = 20;
+            this.btnRefreshList.Text = "Refresh List";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
+            // 
+            // lblProductList
+            // 
+            this.lblProductList.AutoSize = true;
+            this.lblProductList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblProductList.Location = new System.Drawing.Point(457, 34);
+            this.lblProductList.Name = "lblProductList";
+            this.lblProductList.Size = new System.Drawing.Size(146, 32);
+            this.lblProductList.TabIndex = 19;
+            this.lblProductList.Text = "Product list";
+            // 
+            // listBoxProductList
+            // 
+            this.listBoxProductList.FormattingEnabled = true;
+            this.listBoxProductList.ItemHeight = 20;
+            this.listBoxProductList.Location = new System.Drawing.Point(385, 95);
+            this.listBoxProductList.Name = "listBoxProductList";
+            this.listBoxProductList.Size = new System.Drawing.Size(286, 304);
+            this.listBoxProductList.TabIndex = 18;
             // 
             // lblActionResult
             // 
@@ -260,7 +295,7 @@ namespace BackandGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 501);
+            this.ClientSize = new System.Drawing.Size(726, 506);
             this.Controls.Add(this.tabAddProduct);
             this.Name = "ManagerForm";
             this.Text = "FishShop - Product manager";
@@ -295,6 +330,9 @@ namespace BackandGUI
         private System.Windows.Forms.DataGridView dataGridView;
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblProductList;
+        private System.Windows.Forms.ListBox listBoxProductList;
+        private System.Windows.Forms.Button btnRefreshList;
     }
 }
 

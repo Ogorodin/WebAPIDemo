@@ -30,5 +30,13 @@ namespace DataLayer.Entity
             the_type = type;
         }
 
+        public string FullProductInfo
+        {
+            get
+            {
+                return $"{ title } { description } {the_type } ";
+            }
+        }
+
     }
 }
