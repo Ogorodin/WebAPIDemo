@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DataLayer.Repository
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
         public IEnumerable<Product> GetProducts();
         public Product GetProductById(int id);

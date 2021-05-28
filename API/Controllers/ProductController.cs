@@ -1,9 +1,7 @@
-﻿using DataLayer.Entity;
+﻿using API.Services;
+using DataLayer.Entity;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API.Controllers
 {
@@ -11,11 +9,18 @@ namespace API.Controllers
     [Route("product")]
     public class ProductController : Controller
     {
+        private readonly IProductService _productService;
+
+        public ProductController(IProductService service)
+        {
+            _productService = service;
+        }
+
         // get all
         [HttpGet]
         public IEnumerable<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return _productService.GetProducts();
         }
 
         // get by ID
@@ -23,14 +28,14 @@ namespace API.Controllers
         [Route("{id}")]
         public Product GetProductById(int id)
         {
-            throw new NotImplementedException();
+            return _productService.GetProductById(id);
         }
 
         // add product
         [HttpPost]
         public bool AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            return _productService.AddProduct(product);
         }
 
         // update product
@@ -38,7 +43,7 @@ namespace API.Controllers
         [Route("{id}")]
         public bool UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            return _productService.UpdateProduct(product);
         }
 
         // delete product
@@ -46,7 +51,7 @@ namespace API.Controllers
         [Route("{id}")]
         public bool DeleteProductById(int id)
         {
-            throw new NotImplementedException();
+            return _productService.DeleteProductById(id);
         }
 
     }

@@ -10,16 +10,14 @@ namespace DataLayer.Helpers
     {
         private string _connectionSting = "server=localhost;port=3306;database=the_fish_shop_db;uid=root;password=admin;";
 
-        public IEnumerable<object> GetProductList()
+        public IEnumerable<Product> GetProductList()
         {
-
             using (MySqlConnection connection = new MySqlConnection(_connectionSting))
             {
                 connection.Open();
                 //   var procedure = "get_products_with_stock_data";
                 var sql = "SELECT * FROM product";
-                return connection.Query<object>(sql);
-
+                return connection.Query<Product>(sql);
             }
         }
         public void InsertProduct(string title, string description, EProductType productType)
