@@ -30,68 +30,66 @@ namespace BackandGUI
         private void InitializeComponent()
         {
             this.tabAddProduct = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabAddPage = new System.Windows.Forms.TabPage();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.lblProductList = new System.Windows.Forms.Label();
             this.listBoxProductList = new System.Windows.Forms.ListBox();
-            this.lblActionResult = new System.Windows.Forms.Label();
+            this.addTablblActionResult = new System.Windows.Forms.Label();
             this.lblProdutType = new System.Windows.Forms.Label();
-            this.comboBoxProductType = new System.Windows.Forms.ComboBox();
+            this.addTabComboBoxProductType = new System.Windows.Forms.ComboBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblProductName = new System.Windows.Forms.Label();
-            this.txtBoxDescription = new System.Windows.Forms.TextBox();
-            this.txtBoxProductTitle = new System.Windows.Forms.TextBox();
+            this.AddTabTxtBoxDescription = new System.Windows.Forms.TextBox();
+            this.addTabTxtBoxProductTitle = new System.Windows.Forms.TextBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
-            this.lblAddProductTitle = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
+            this.addTablblAddProductTitle = new System.Windows.Forms.Label();
+            this.tabFind = new System.Windows.Forms.TabPage();
+            this.listBoxFindView = new System.Windows.Forms.ListBox();
             this.btnLoadTable = new System.Windows.Forms.Button();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.comboBoxSearchCriteria = new System.Windows.Forms.ComboBox();
-            this.textBoxSearchBar = new System.Windows.Forms.TextBox();
+            this.findTabComboBoxColumnName = new System.Windows.Forms.ComboBox();
+            this.findTabTextBoxSearchBar = new System.Windows.Forms.TextBox();
             this.lblSearchCriteria = new System.Windows.Forms.Label();
             this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.tabAddProduct.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.tabAddPage.SuspendLayout();
+            this.tabFind.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAddProduct
             // 
-            this.tabAddProduct.Controls.Add(this.tabPage1);
-            this.tabAddProduct.Controls.Add(this.tabPage2);
+            this.tabAddProduct.Controls.Add(this.tabAddPage);
+            this.tabAddProduct.Controls.Add(this.tabFind);
             this.tabAddProduct.Location = new System.Drawing.Point(0, 3);
             this.tabAddProduct.Name = "tabAddProduct";
             this.tabAddProduct.SelectedIndex = 0;
-            this.tabAddProduct.Size = new System.Drawing.Size(730, 504);
+            this.tabAddProduct.Size = new System.Drawing.Size(1097, 504);
             this.tabAddProduct.TabIndex = 9;
             // 
-            // tabPage1
+            // tabAddPage
             // 
-            this.tabPage1.Controls.Add(this.btnRefreshList);
-            this.tabPage1.Controls.Add(this.lblProductList);
-            this.tabPage1.Controls.Add(this.listBoxProductList);
-            this.tabPage1.Controls.Add(this.lblActionResult);
-            this.tabPage1.Controls.Add(this.lblProdutType);
-            this.tabPage1.Controls.Add(this.comboBoxProductType);
-            this.tabPage1.Controls.Add(this.lblDescription);
-            this.tabPage1.Controls.Add(this.lblProductName);
-            this.tabPage1.Controls.Add(this.txtBoxDescription);
-            this.tabPage1.Controls.Add(this.txtBoxProductTitle);
-            this.tabPage1.Controls.Add(this.btnAddProduct);
-            this.tabPage1.Controls.Add(this.lblAddProductTitle);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(722, 471);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Add";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabAddPage.Controls.Add(this.btnRefreshList);
+            this.tabAddPage.Controls.Add(this.lblProductList);
+            this.tabAddPage.Controls.Add(this.listBoxProductList);
+            this.tabAddPage.Controls.Add(this.addTablblActionResult);
+            this.tabAddPage.Controls.Add(this.lblProdutType);
+            this.tabAddPage.Controls.Add(this.addTabComboBoxProductType);
+            this.tabAddPage.Controls.Add(this.lblDescription);
+            this.tabAddPage.Controls.Add(this.lblProductName);
+            this.tabAddPage.Controls.Add(this.AddTabTxtBoxDescription);
+            this.tabAddPage.Controls.Add(this.addTabTxtBoxProductTitle);
+            this.tabAddPage.Controls.Add(this.btnAddProduct);
+            this.tabAddPage.Controls.Add(this.addTablblAddProductTitle);
+            this.tabAddPage.Location = new System.Drawing.Point(4, 29);
+            this.tabAddPage.Name = "tabAddPage";
+            this.tabAddPage.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAddPage.Size = new System.Drawing.Size(1089, 471);
+            this.tabAddPage.TabIndex = 0;
+            this.tabAddPage.Text = "Add";
+            this.tabAddPage.UseVisualStyleBackColor = true;
             // 
             // btnRefreshList
             // 
-            this.btnRefreshList.Location = new System.Drawing.Point(486, 428);
+            this.btnRefreshList.Location = new System.Drawing.Point(665, 424);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Size = new System.Drawing.Size(94, 29);
             this.btnRefreshList.TabIndex = 20;
@@ -103,7 +101,7 @@ namespace BackandGUI
             // 
             this.lblProductList.AutoSize = true;
             this.lblProductList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblProductList.Location = new System.Drawing.Point(457, 34);
+            this.lblProductList.Location = new System.Drawing.Point(638, 34);
             this.lblProductList.Name = "lblProductList";
             this.lblProductList.Size = new System.Drawing.Size(146, 32);
             this.lblProductList.TabIndex = 19;
@@ -115,18 +113,19 @@ namespace BackandGUI
             this.listBoxProductList.ItemHeight = 20;
             this.listBoxProductList.Location = new System.Drawing.Point(385, 95);
             this.listBoxProductList.Name = "listBoxProductList";
-            this.listBoxProductList.Size = new System.Drawing.Size(286, 304);
+            this.listBoxProductList.Size = new System.Drawing.Size(669, 304);
             this.listBoxProductList.TabIndex = 18;
             // 
-            // lblActionResult
+            // addTablblActionResult
             // 
-            this.lblActionResult.AutoSize = true;
-            this.lblActionResult.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblActionResult.Location = new System.Drawing.Point(228, 184);
-            this.lblActionResult.Name = "lblActionResult";
-            this.lblActionResult.Size = new System.Drawing.Size(0, 28);
-            this.lblActionResult.TabIndex = 17;
-            this.lblActionResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.addTablblActionResult.AutoSize = true;
+            this.addTablblActionResult.BackColor = System.Drawing.Color.Gainsboro;
+            this.addTablblActionResult.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addTablblActionResult.Location = new System.Drawing.Point(64, 290);
+            this.addTablblActionResult.Name = "addTablblActionResult";
+            this.addTablblActionResult.Size = new System.Drawing.Size(0, 28);
+            this.addTablblActionResult.TabIndex = 17;
+            this.addTablblActionResult.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblProdutType
             // 
@@ -137,10 +136,10 @@ namespace BackandGUI
             this.lblProdutType.TabIndex = 16;
             this.lblProdutType.Text = "Product type:";
             // 
-            // comboBoxProductType
+            // addTabComboBoxProductType
             // 
-            this.comboBoxProductType.FormattingEnabled = true;
-            this.comboBoxProductType.Items.AddRange(new object[] {
+            this.addTabComboBoxProductType.FormattingEnabled = true;
+            this.addTabComboBoxProductType.Items.AddRange(new object[] {
             "FW_FISH",
             "SW_FISH",
             "P_FISH",
@@ -151,10 +150,10 @@ namespace BackandGUI
             "TANK",
             "FILTER",
             "CO2"});
-            this.comboBoxProductType.Location = new System.Drawing.Point(166, 238);
-            this.comboBoxProductType.Name = "comboBoxProductType";
-            this.comboBoxProductType.Size = new System.Drawing.Size(151, 28);
-            this.comboBoxProductType.TabIndex = 15;
+            this.addTabComboBoxProductType.Location = new System.Drawing.Point(166, 238);
+            this.addTabComboBoxProductType.Name = "addTabComboBoxProductType";
+            this.addTabComboBoxProductType.Size = new System.Drawing.Size(151, 28);
+            this.addTabComboBoxProductType.TabIndex = 15;
             // 
             // lblDescription
             // 
@@ -174,24 +173,24 @@ namespace BackandGUI
             this.lblProductName.TabIndex = 13;
             this.lblProductName.Text = "Title:";
             // 
-            // txtBoxDescription
+            // AddTabTxtBoxDescription
             // 
-            this.txtBoxDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.txtBoxDescription.Location = new System.Drawing.Point(166, 178);
-            this.txtBoxDescription.Name = "txtBoxDescription";
-            this.txtBoxDescription.Size = new System.Drawing.Size(151, 27);
-            this.txtBoxDescription.TabIndex = 12;
+            this.AddTabTxtBoxDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.AddTabTxtBoxDescription.Location = new System.Drawing.Point(166, 178);
+            this.AddTabTxtBoxDescription.Name = "AddTabTxtBoxDescription";
+            this.AddTabTxtBoxDescription.Size = new System.Drawing.Size(151, 27);
+            this.AddTabTxtBoxDescription.TabIndex = 12;
             // 
-            // txtBoxProductTitle
+            // addTabTxtBoxProductTitle
             // 
-            this.txtBoxProductTitle.Location = new System.Drawing.Point(166, 115);
-            this.txtBoxProductTitle.Name = "txtBoxProductTitle";
-            this.txtBoxProductTitle.Size = new System.Drawing.Size(151, 27);
-            this.txtBoxProductTitle.TabIndex = 11;
+            this.addTabTxtBoxProductTitle.Location = new System.Drawing.Point(166, 115);
+            this.addTabTxtBoxProductTitle.Name = "addTabTxtBoxProductTitle";
+            this.addTabTxtBoxProductTitle.Size = new System.Drawing.Size(151, 27);
+            this.addTabTxtBoxProductTitle.TabIndex = 11;
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(128, 337);
+            this.btnAddProduct.Location = new System.Drawing.Point(150, 337);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(94, 29);
             this.btnAddProduct.TabIndex = 10;
@@ -199,41 +198,39 @@ namespace BackandGUI
             this.btnAddProduct.UseVisualStyleBackColor = true;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
-            // lblAddProductTitle
+            // addTablblAddProductTitle
             // 
-            this.lblAddProductTitle.AutoSize = true;
-            this.lblAddProductTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAddProductTitle.Location = new System.Drawing.Point(97, 34);
-            this.lblAddProductTitle.Name = "lblAddProductTitle";
-            this.lblAddProductTitle.Size = new System.Drawing.Size(159, 32);
-            this.lblAddProductTitle.TabIndex = 9;
-            this.lblAddProductTitle.Text = "Add Product";
+            this.addTablblAddProductTitle.AutoSize = true;
+            this.addTablblAddProductTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addTablblAddProductTitle.Location = new System.Drawing.Point(97, 34);
+            this.addTablblAddProductTitle.Name = "addTablblAddProductTitle";
+            this.addTablblAddProductTitle.Size = new System.Drawing.Size(159, 32);
+            this.addTablblAddProductTitle.TabIndex = 9;
+            this.addTablblAddProductTitle.Text = "Add Product";
             // 
-            // tabPage2
+            // tabFind
             // 
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.btnLoadTable);
-            this.tabPage2.Controls.Add(this.dataGridView);
-            this.tabPage2.Controls.Add(this.comboBoxSearchCriteria);
-            this.tabPage2.Controls.Add(this.textBoxSearchBar);
-            this.tabPage2.Controls.Add(this.lblSearchCriteria);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(722, 471);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Find";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabFind.Controls.Add(this.listBoxFindView);
+            this.tabFind.Controls.Add(this.btnLoadTable);
+            this.tabFind.Controls.Add(this.findTabComboBoxColumnName);
+            this.tabFind.Controls.Add(this.findTabTextBoxSearchBar);
+            this.tabFind.Controls.Add(this.lblSearchCriteria);
+            this.tabFind.Location = new System.Drawing.Point(4, 29);
+            this.tabFind.Name = "tabFind";
+            this.tabFind.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFind.Size = new System.Drawing.Size(1089, 471);
+            this.tabFind.TabIndex = 1;
+            this.tabFind.Text = "Find";
+            this.tabFind.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // listBoxFindView
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Tomato;
-            this.label2.Location = new System.Drawing.Point(204, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(305, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Disfunctional / Stuck at populating the table.";
+            this.listBoxFindView.FormattingEnabled = true;
+            this.listBoxFindView.ItemHeight = 20;
+            this.listBoxFindView.Location = new System.Drawing.Point(26, 143);
+            this.listBoxFindView.Name = "listBoxFindView";
+            this.listBoxFindView.Size = new System.Drawing.Size(561, 304);
+            this.listBoxFindView.TabIndex = 7;
             // 
             // btnLoadTable
             // 
@@ -243,37 +240,27 @@ namespace BackandGUI
             this.btnLoadTable.TabIndex = 4;
             this.btnLoadTable.Text = "Load table";
             this.btnLoadTable.UseVisualStyleBackColor = true;
+            this.btnLoadTable.Click += new System.EventHandler(this.btnLoadTable_Click);
             // 
-            // dataGridView
+            // findTabComboBoxColumnName
             // 
-            this.dataGridView.AllowUserToOrderColumns = true;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(42, 152);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(646, 293);
-            this.dataGridView.TabIndex = 3;
-            // 
-            // comboBoxSearchCriteria
-            // 
-            this.comboBoxSearchCriteria.FormattingEnabled = true;
-            this.comboBoxSearchCriteria.Items.AddRange(new object[] {
+            this.findTabComboBoxColumnName.FormattingEnabled = true;
+            this.findTabComboBoxColumnName.Items.AddRange(new object[] {
             "Title",
             "Description",
             "Price range",
             "Fish type"});
-            this.comboBoxSearchCriteria.Location = new System.Drawing.Point(265, 72);
-            this.comboBoxSearchCriteria.Name = "comboBoxSearchCriteria";
-            this.comboBoxSearchCriteria.Size = new System.Drawing.Size(182, 28);
-            this.comboBoxSearchCriteria.TabIndex = 2;
+            this.findTabComboBoxColumnName.Location = new System.Drawing.Point(265, 72);
+            this.findTabComboBoxColumnName.Name = "findTabComboBoxColumnName";
+            this.findTabComboBoxColumnName.Size = new System.Drawing.Size(182, 28);
+            this.findTabComboBoxColumnName.TabIndex = 2;
             // 
-            // textBoxSearchBar
+            // findTabTextBoxSearchBar
             // 
-            this.textBoxSearchBar.Location = new System.Drawing.Point(265, 105);
-            this.textBoxSearchBar.Name = "textBoxSearchBar";
-            this.textBoxSearchBar.Size = new System.Drawing.Size(182, 27);
-            this.textBoxSearchBar.TabIndex = 1;
+            this.findTabTextBoxSearchBar.Location = new System.Drawing.Point(265, 105);
+            this.findTabTextBoxSearchBar.Name = "findTabTextBoxSearchBar";
+            this.findTabTextBoxSearchBar.Size = new System.Drawing.Size(182, 27);
+            this.findTabTextBoxSearchBar.TabIndex = 1;
             // 
             // lblSearchCriteria
             // 
@@ -295,16 +282,15 @@ namespace BackandGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 506);
+            this.ClientSize = new System.Drawing.Size(1120, 519);
             this.Controls.Add(this.tabAddProduct);
             this.Name = "ManagerForm";
             this.Text = "FishShop - Product manager";
             this.tabAddProduct.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.tabAddPage.ResumeLayout(false);
+            this.tabAddPage.PerformLayout();
+            this.tabFind.ResumeLayout(false);
+            this.tabFind.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -312,27 +298,26 @@ namespace BackandGUI
         #endregion
 
         private System.Windows.Forms.TabControl tabAddProduct;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label lblActionResult;
+        private System.Windows.Forms.TabPage tabAddPage;
+        private System.Windows.Forms.Label addTablblActionResult;
         private System.Windows.Forms.Label lblProdutType;
-        private System.Windows.Forms.ComboBox comboBoxProductType;
+        private System.Windows.Forms.ComboBox addTabComboBoxProductType;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblProductName;
-        private System.Windows.Forms.TextBox txtBoxDescription;
-        private System.Windows.Forms.TextBox txtBoxProductTitle;
+        private System.Windows.Forms.TextBox AddTabTxtBoxDescription;
+        private System.Windows.Forms.TextBox addTabTxtBoxProductTitle;
         private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.Label lblAddProductTitle;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBoxSearchBar;
+        private System.Windows.Forms.Label addTablblAddProductTitle;
+        private System.Windows.Forms.TabPage tabFind;
+        private System.Windows.Forms.TextBox findTabTextBoxSearchBar;
         private System.Windows.Forms.Label lblSearchCriteria;
-        private System.Windows.Forms.ComboBox comboBoxSearchCriteria;
+        private System.Windows.Forms.ComboBox findTabComboBoxColumnName;
         private System.Windows.Forms.Button btnLoadTable;
-        private System.Windows.Forms.DataGridView dataGridView;
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblProductList;
         private System.Windows.Forms.ListBox listBoxProductList;
         private System.Windows.Forms.Button btnRefreshList;
+        private System.Windows.Forms.ListBox listBoxFindView;
     }
 }
 

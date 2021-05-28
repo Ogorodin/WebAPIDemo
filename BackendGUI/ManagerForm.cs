@@ -2,7 +2,6 @@
 using System;
 using System.Windows.Forms;
 using DataLayer.Entity;
-using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +20,7 @@ namespace BackandGUI
         public void LoadProductList()
         {
             _db = new DataAccess();
-            _productList = _db.GetCompleteProductWithStockData();
+            _productList = _db.GetProductList();
             WireUpProductList();
         }
 
@@ -30,9 +29,9 @@ namespace BackandGUI
             try
             {
                 _db = new DataAccess();
-                _db.InsertProduct(txtBoxProductTitle.Text, txtBoxDescription.Text, (Product.EProductType)comboBoxProductType.SelectedIndex);
-                txtBoxProductTitle.Text = "";
-                txtBoxDescription.Text = "";
+                _db.InsertProduct(addTabTxtBoxProductTitle.Text, AddTabTxtBoxDescription.Text, (Product.EProductType)addTabComboBoxProductType.SelectedIndex);
+                addTabTxtBoxProductTitle.Text = "";
+                AddTabTxtBoxDescription.Text = "";
                 lblActionResult_TextChanged_ResponseTo_IsProductAdded(true);
             }
             catch (Exception exc)
@@ -46,13 +45,13 @@ namespace BackandGUI
         {
             if (result)
             {
-                lblActionResult.ForeColor = System.Drawing.Color.Green;
-                lblActionResult.Text = "Item added to database.";
+                addTablblActionResult.ForeColor = System.Drawing.Color.Green;
+                addTablblActionResult.Text = "Item added to database.";
             }
             else
             {
-                lblActionResult.ForeColor = System.Drawing.Color.Red;
-                lblActionResult.Text = "Something went wrong. No items inserted.";
+                addTablblActionResult.ForeColor = System.Drawing.Color.Red;
+                addTablblActionResult.Text = "Something went wrong. No items inserted.";
             }
         }
 
@@ -66,5 +65,15 @@ namespace BackandGUI
         {
             LoadProductList();
         }
+
+        private void btnLoadTable_Click(object sender, EventArgs e)
+        {
+            _db = new DataAccess();
+            _productList = _db.GetProductListWithSearchCriteria(findTabComboBoxColumnName.Text, findTabTextBoxSearchBar.Text).ToList();
+            findTabComboBoxColumnName.Text = "";
+            findTabTextBoxSearchBar.Text = "";
+        }
+
+
     }
 }
